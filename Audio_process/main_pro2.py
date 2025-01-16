@@ -3,7 +3,7 @@ import librosa
 from audio_analysis import read_audio, calculate_fft, calculate_spectrogram
 import numpy as np
 
-audio_path = "C:\\Users\\amirh\\OneDrive\\Documents\\signal\\Audio_process\\audio_1.ogg"
+audio_path = "C:\\Users\\amirh\\OneDrive\\Documents\\signal\\Audio_process\\audio_2.ogg"
 data, sr = librosa.load(audio_path, sr=None)
 
 # Plot Waveform

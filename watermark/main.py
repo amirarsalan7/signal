@@ -4,11 +4,11 @@ import wave
 import cv2
 
 # Read the image
-image_path = 'IMG_2.jpg'  # Replace with your image path
+image_path = 'IMG_1.jpg'  # Replace with your image path
 image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)  # Read image in grayscale
 
 # Read the audio
-audio_path = 'mixkit-classic-alarm-995.wav'  # Replace with your audio path
+audio_path = 'audio_4.wav'  # Replace with your audio path
 with wave.open(audio_path, 'rb') as audio_file:
     params = audio_file.getparams()
     audio_frames = audio_file.readframes(params.nframes)
@@ -43,7 +43,7 @@ watermarked_image = pywt.idwt2(coeffs_watermarked, 'haar')
 
 # Clip and convert to uint8 for saving
 watermarked_image = np.clip(watermarked_image, 0, 255).astype(np.uint8)
-cv2.imwrite('watermarked_image.png', watermarked_image)
+cv2.imwrite('watermarked_image1.png', watermarked_image)
 
 # Step 5: Extract the audio signal from the watermarked image
 coeffs_extracted = pywt.dwt2(watermarked_image, 'haar')
@@ -64,7 +64,7 @@ extracted_audio = (extracted_audio - np.min(extracted_audio)) / (np.max(extracte
 extracted_audio = (extracted_audio * 32767).astype(np.int16)
 
 # Save the extracted audio
-with wave.open('extracted_audio.wav', 'wb') as output_audio:
+with wave.open('extracted_audio_4_IMG_1_new.wav', 'wb') as output_audio:
     output_audio.setparams(params)
     output_audio.writeframes(extracted_audio.tobytes())
 
